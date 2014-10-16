@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>数据与服务器</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="../js/jquery-2.0.3.min.js"></script>
+        <script src="../js/underscore-min.js"></script>
+        <script src="../js/backbone-min.js"></script>
+        
+<script type="text/javascript">
+/**
+ * 数据与服务器
+ */
+//**********************************************************************01
+/*
+Backbone.sync = function(method, model) {
+  alert(method + ": " + JSON.stringify(model));
+  model.id = 1;
+};
+
+var M = Backbone.Model.extend({
+    defaults:{name:"hello",age:34},
+    url:"/user"
+});
+var m = new M;
+m.save();//首次新增
+m.save({name:"lisi"});//再次修改
+*/
+//**********************************************************************02
+Backbone.sync = function(method, model) {
+  alert(method + ": " + JSON.stringify(model));
+};
+var C = Backbone.Collection.extend({
+    initialize:function (){
+        this.on("reset",function(){
+            alert(123);
+        });
+    },
+    url:"/users"
+});
+var models = new C;
+models.fetch();
+
+</script>        
+        
+        
+    </head>
+    
+    <body>
+        <div>TODO write content4</div><br>
+    </body>
+    
+
+</html>

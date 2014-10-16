@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>backbone新建对象</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="../js/jquery-2.0.3.min.js"></script>
+        <script src="../js/underscore-min.js"></script>
+        <script src="../js/backbone-min.js"></script>
+        
+<script type="text/javascript">
+
+/**
+ * backbone创建对象
+ */
+//**********************************************************************01
+var model = new Backbone.Model();   //创建了一个model对象
+var view = new Backbone.View();
+var models = new Backbone.Collection();
+
+//**********************************************************************02
+//setter/getter设置注入
+var person = new Backbone.Model();
+person.set('name','lucy');
+alert("**person的值为："+person.get('name'));
+
+$(function(){
+    $("#btn1").click(function(){
+        $("#div01").text(person.get('name'));
+    });
+});
+
+//**********************************************************************03
+//构造注入+集合
+var user1 = new Backbone.Model({"name":"zhangsan"});
+var user2 = new Backbone.Model({"name":"lisi"});
+var user3 = new Backbone.Model({"name":"wangwu"});
+
+var userList = new Backbone.Collection();
+userList.add(user1);
+userList.add(user2);
+userList.add(user3);
+userList.add({"name":"sunqi"});
+
+alert(JSON.stringify(userList));
+
+</script>        
+        
+        
+    </head>
+
+    
+
+    <body>
+        <div>TODO write content</div><br>
+        <button id="btn1">点我赋值</button>
+        
+        <div id="div01">我是div01</div>
+    </body>
+    
+
+</html>

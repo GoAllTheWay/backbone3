@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>给构造函数添加实例方法和静态方法</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="../js/jquery-2.0.3.min.js"></script>
+        <script src="../js/underscore-min.js"></script>
+        <script src="../js/backbone-min.js"></script>
+        
+<script type="text/javascript">
+/**
+ * 给构造函数添加实例方法和静态方法
+ */
+//**********************************************************************01
+//实例方法+静态方法
+var M = Backbone.Model.extend(
+    {//实例方法
+        getInfo:function(){ alert("this is model_1......");},
+        getPhone:function(phoneNum){ alert(phoneNum);}
+    },
+    {//静态方法
+        getEmail:function(){alert("abc@163.com");}
+    }
+);
+
+var person = new M;
+person.getInfo();
+person.getPhone(533533533);
+M.getEmail();
+
+//**********************************************************************02
+//默认设值构造
+var M2 = Backbone.Model.extend({
+    defaults:{"name":"关毅","age":26,"email":"aaa@sina.com"}
+});
+var person2 = new M2;
+alert(person2.get("name")+" "+person2.get("age")+" "+person2.get("email"));
+
+</script>        
+        
+        
+    </head>
+
+    
+
+    <body>
+        <div>TODO write content</div><br>
+    </body>
+    
+
+</html>

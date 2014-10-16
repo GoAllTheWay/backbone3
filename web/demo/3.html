@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>继承操作</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="../js/jquery-2.0.3.min.js"></script>
+        <script src="../js/underscore-min.js"></script>
+        <script src="../js/backbone-min.js"></script>
+        
+<script type="text/javascript">
+/**
+ * 继承操作
+ */
+//**********************************************************************01
+var Father = Backbone.Model.extend({
+    aaa : function(){alert("Father in 父类");}
+});
+var Son = Father.extend();
+
+var father = new Father;
+father.aaa();//父类自定调用自己的方法
+
+var s1 = new Son;
+s1.aaa();//子类继承了父类的方法
+
+s1.aaa = function(){alert("son yourself");};
+s1.aaa();//方法重写
+
+//**********************************************************************02
+//重新自定义定义对象
+function Order(orderNum,orderPrice)
+{
+    this.orderNum = orderNum;
+    this.orderPrice = orderPrice;
+    
+    this.getOrderInfo = function(){return this.orderNum+" : "+this.orderPrice;};
+}
+
+var order2 = new Order("JD001",128.34);
+var retValue = order2.getOrderInfo();
+alert(retValue);
+</script>        
+        
+        
+    </head>
+
+    
+
+    <body>
+        <div>TODO write content</div><br>
+    </body>
+    
+
+</html>

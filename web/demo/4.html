@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>自定义事件</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="../js/jquery-2.0.3.min.js"></script>
+        <script src="../js/underscore-min.js"></script>
+        <script src="../js/backbone-min.js"></script>
+        
+<script type="text/javascript">
+/**
+ * 自定义事件
+ */
+//**********************************************************************01
+
+/*
+var M = Backbone.Model.extend({
+    defaults:{  name:"关毅" },
+    initialize:function(){//初始化构造函数
+      this.on("change",function(){
+          alert("函数修改...");
+      });  
+    }
+});
+
+var model = new M;
+alert(model.get("name"));
+model.set("name","李红");
+alert(model.get("name"));
+
+*/
+//**********************************************************************02
+
+/*
+var M2 = Backbone.Model.extend({
+    defaults:{  name:"关毅",age:25 },
+    initialize:function(){//初始化构造函数
+      this.on("change:age",function(model){
+          alert("age修改...");
+          console.log(model);
+      });  
+    }
+});
+var model2 = new M2;
+alert(model2.get("age"));
+model2.set("age",33);
+alert(model2.get("age"));
+*/
+
+//**********************************************************************03
+//如何将模型和视图结合到一块
+$(function(){
+    var M3 = Backbone.Model.extend({
+        defaults:{  name:"苏圈",age:25 }
+    });
+    
+    var V = Backbone.View.extend({
+        initialize : function(){
+            this.listenTo( this.model , 'change' , this.show );
+        },
+        show : function(model){
+            $('body').append( '<div>'+ model.get('name') +'</div>' );
+        }
+    });
+    
+    var m3 = new M3;
+    var v = new V({model:m3});
+    m3.set('name','李石');
+});
+</script>        
+        
+        
+    </head>
+
+    
+
+    <body>
+        <div>TODO write content4</div><br>
+    </body>
+    
+
+</html>
